@@ -360,3 +360,30 @@ print()
 # import
 mydata = io.loadmat('arr.mat', squeeze_me=True)
 print(mydata['vec'])
+print()
+
+# SciPy Interpolation
+# 1D Interpolation
+from scipy.interpolate import interp1d, UnivariateSpline, Rbf
+
+xs = np.arange(10)
+ys = 2*xs + 1
+interp_func = interp1d(xs, ys)
+newarr = interp_func(np.arange(2.1, 3, 0.1))
+print(newarr)
+print()
+
+
+# Spline Interpolation
+ys = xs**2 + np.sin(xs) + 1
+interp_func = UnivariateSpline(xs, ys)
+newarr = interp_func(np.arange(2.1, 3, 0.1))
+print(newarr)
+print()
+
+# Interpolation with Radial Basis Function
+ys = xs**2 + np.sin(xs) + 1
+interp_func = Rbf(xs, ys)
+newarr = interp_func(np.arange(2.1, 3, 0.1))
+print(newarr)
+print()
