@@ -221,3 +221,44 @@ print()
 newarr = csr_matrix(arr).tocsc()
 print(newarr)
 print()
+
+# SciPy Graphs
+# Connected Components
+from scipy.sparse.csgraph import connected_components, dijkstra, floyd_warshall, bellman_ford, depth_first_order, breadth_first_order
+from scipy.sparse import csr_matrix
+arr = np.array([
+    [0,1,2],
+    [1,0,0],
+    [2,0,0]
+])
+newarr = csr_matrix(arr)
+print(connected_components(newarr))
+print()
+
+# Dijkstra
+print(dijkstra(newarr, return_predecessors=True, indices=0))
+print()
+
+# Floyd Warshall
+print(floyd_warshall(newarr, return_predecessors=True))
+print()
+
+# Bellman Ford
+print(bellman_ford(newarr, return_predecessors=True, indices=0))
+print()
+
+# Depth First Order
+arr = np.array([
+  [0, 1, 0, 1],
+  [1, 1, 1, 1],
+  [2, 1, 1, 0],
+  [0, 1, 0, 1]
+])
+newarr = csr_matrix(arr)
+print(depth_first_order(newarr, 1))
+print()
+
+# Breadth First Order
+newarr = csr_matrix(arr)
+print(breadth_first_order(newarr, 1))
+print()
