@@ -167,3 +167,57 @@ print(constants.pound_force)     #4.4482216152605
 print(constants.kgf)             #9.80665
 print(constants.kilogram_force)  #9.80665
 print()
+
+# SciPy Optimizers
+from scipy.optimize import root
+from math import cos
+
+def eqn(x):
+    return x + cos(x)
+myroot = root(eqn, 0)
+print(myroot.x)
+print()
+print(myroot)
+print()
+
+# Minimizing a Function
+from scipy.optimize import minimize
+def eqn(x):
+    return x**2 + x + 2
+mymin = minimize(eqn, 0, method='BFGS')
+print(mymin)
+print()
+
+# SciPy Sparse Data
+# CSR Matrix
+from scipy.sparse import csr_matrix
+import numpy as np
+arr = np.array([0,0,0,0,0,1,1,0,2])
+print(csr_matrix(arr))
+print()
+
+# Sparse Matrix Methods
+arr = np.array([[0, 0, 0], [0, 0, 1], [1, 0, 2]])
+print(csr_matrix(arr).data)
+print()
+
+arr = np.array([[0, 2, 0], [10, 0, 1], [1, 0, 2]])
+print(csr_matrix(arr).count_nonzero())
+print()
+
+# Removing zero-entries from the matrix with the eliminate_zeros() method
+mat = csr_matrix(arr)
+mat.eliminate_zeros()
+print(mat)
+print()
+
+# Eliminating duplicate entries with the sum_duplicates() method
+mat = csr_matrix(arr)
+mat.sum_duplicates()
+print(mat)
+print()
+
+# Converting from csr to csc with the tocsc() method
+newarr = csr_matrix(arr).tocsc()
+print(newarr)
+print()
