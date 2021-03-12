@@ -278,7 +278,7 @@ points = np.array([
 simplices = Delaunay(points).simplices
 plt.triplot(points[:, 0], points[:, 1], simplices)
 plt.scatter(points[:, 0], points[:, 1], color='r')
-plt.show()
+# plt.show()
 
 # Convex Hull
 points = np.array([
@@ -300,7 +300,7 @@ hull_points = hull.simplices
 plt.scatter(points[:,0], points[:,1])
 for simplex in hull_points:
     plt.plot(points[simplex,0], points[simplex,1], 'k-')
-plt.show()
+# plt.show()
 
 # KDTrees
 points = [(1,-1), (2,3),(-2,3),(2,-3)]
@@ -339,3 +339,24 @@ p2 = (False, True, True)
 res = hamming(p1, p2)
 print(res)
 print()
+
+# SciPy Matlab Arrays
+# Exporting Data in Matlab Format
+from scipy import io
+arr = np.arange(10)
+io.savemat('arr.mat', {"vec" : arr})
+
+# Import Data from Matlab Format
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9,])
+# Export:
+io.savemat('arr.mat', {"vec": arr})
+# Import:
+mydata = io.loadmat('arr.mat')
+print(mydata)
+print()
+print(mydata['vec'])
+print()
+
+# import
+mydata = io.loadmat('arr.mat', squeeze_me=True)
+print(mydata['vec'])
