@@ -387,3 +387,40 @@ interp_func = Rbf(xs, ys)
 newarr = interp_func(np.arange(2.1, 3, 0.1))
 print(newarr)
 print()
+
+# SciPy Statistical Significance Tests
+from scipy.stats import ttest_ind
+v1 = np.random.normal(size=100)
+v2 = np.random.normal(size=100)
+res = ttest_ind(v1, v2)
+print(res)
+print()
+
+res = ttest_ind(v1, v2).pvalue
+print(res)
+print()
+
+# KS-Test
+from scipy.stats import kstest
+
+v = np.random.normal(size=100)
+res = kstest(v, 'norm')
+print(res)
+print()
+
+# Statistical Description of Data
+from scipy.stats import describe, skew, kurtosis, normaltest
+v = np.random.normal(size=100)
+res = describe(v)
+print(res)
+print()
+
+# Normality Tests (Skewness and Kurtosis)
+v = np.random.normal(size=100)
+print(skew(v))
+print(kurtosis(v))
+print()
+
+# Find if the data comes from a normal distribution
+print(normaltest(v))
+print()
